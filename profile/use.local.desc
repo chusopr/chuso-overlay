@@ -1,0 +1,1 @@
+sys-apps/coreutils:progress-bar - Enable unofficial patch for sys-apps/coreutils to enable progress bar on mv and cp

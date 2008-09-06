@@ -1,0 +1,20 @@
+--- data/desktop/gtranslator.desktop.in.orig	2008-06-07 14:49:38.000000000 +0200
++++ data/desktop/gtranslator.desktop.in	2008-06-07 14:50:03.000000000 +0200
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-_Name=gtranslator
+-_Comment=The GNOME translation program
+-Icon=gtranslator.png
++Name=gtranslator
++Comment=The GNOME translation program
++Icon=gtranslator
+ Exec=gtranslator
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=Application;Development;
++Categories=Development;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gtranslator
+ X-GNOME-Bugzilla-Component=general
