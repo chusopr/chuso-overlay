@@ -4,7 +4,7 @@
 
 inherit eutils rpm
 
-DESCRIPTION="This is a sample skeleton ebuild file"
+DESCRIPTION="Google Desktop search applet for Linux"
 HOMEPAGE="http://desktop.google.com"
 SRC_URI="http://dl.google.com/linux/rpm/stable/i386/${PN}-linux-${PV}.rpm"
 LICENSE="Google"
