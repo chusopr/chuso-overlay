@@ -22,6 +22,27 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_PN}"
 
+pkg_setup()
+{
+	ewarn "ATTENTION!!!"
+	ewarn "This library included patented algorithms so you may be infringing"
+	ewarn "patent rights by emerging it."
+	ewarn "It's your responsibility to be sure to be in a right legal situation"
+	ewarn "before emerging this package."
+	ewarn "ATTENTION!!!"
+}
+
 src_install() {
-        emake DESTDIR=${D} install || die "make install failed"
+	emake DESTDIR=${D} install || die "make install failed"
+}
+
+pkg_postinst()
+{
+	ewarn "ATTENTION!!!"
+	ewarn "This library included patented algorithms so you may be infringing"
+	ewarn "patent rights by emerging it."
+	ewarn "It's your responsibility to be sure to be in the right legal	situation."
+	ewarn "If don't, please remove this package, God kills a kitten every time"
+	ewarn "you piracy Software."
+	ewarn "ATTENTION!!!"
 }
