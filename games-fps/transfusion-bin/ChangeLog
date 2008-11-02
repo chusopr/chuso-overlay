@@ -1,0 +1,7 @@
+# ChangeLog for games-fps/transfusion-bin
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  02 Nov 2008; Jesús Pérez (h0m3r) <chescu@gmail.com> ChangeLog:
+  New ebuild for bug 182270
+

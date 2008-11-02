@@ -1,6 +1,6 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc-svn/sdcc-svn-2.5.0.ebuild,v 1.1 2006/05/05 18:41:38 calchan Exp $
+# $Header: $
 
 ESVN_REPO_URI="https://nel.svn.sourceforge.net/svnroot/nel/trunk/@${PV}"
 
@@ -20,9 +20,9 @@ DEPEND="dev-libs/libxml2
 		media-libs/freetype
 		media-libs/jpeg
 		x11-proto/xf86vidmodeproto
-		gtk? (=x11-libs/gtk+-2*)
-		openal? (media-libs/freealut)
-		opengl? (virtual/opengl)"
+		gtk? ( =x11-libs/gtk+-2* )
+		openal? ( media-libs/freealut )
+		opengl? ( virtual/opengl )"
 
 S=${S}/nel
 src_compile() {

@@ -17,7 +17,7 @@ RESTRICT="mirror"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-    app-arch/unzip"
+	app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
 

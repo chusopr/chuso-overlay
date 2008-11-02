@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -7,7 +7,7 @@ inherit eutils rpm
 DESCRIPTION="Google Desktop search applet for Linux"
 HOMEPAGE="http://desktop.google.com"
 SRC_URI="http://dl.google.com/linux/rpm/stable/i386/${PN}-linux-${PV}.rpm"
-LICENSE="Google"
+LICENSE="google-desktop"
 SLOT="0"
 KEYWORDS="~x86"
 #IUSE="gnome X"
@@ -17,6 +17,6 @@ DEPEND=">=sys-libs/glibc-2.3.2
 RDEPEND="${DEPEND}"
 
 src_install() {
-	chown -R root:root ${WORKDIR}
-	mv ${WORKDIR}/* ${D}
+	chown -R root:root "${WORKDIR}"
+	mv "${WORKDIR}"/* "${D}"
 }

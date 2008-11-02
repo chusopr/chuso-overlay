@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -8,14 +8,14 @@ DESCRIPTION="OpenProj is a free, open source desktop alternative to Microsoft Pr
 HOMEPAGE="http://openproj.org/openproj"
 SRC_URI="mirror://sourceforge/openproj/openproj-${PV}.tar.gz"
 
-LICENSE="CPLA"
+LICENSE="CPAL"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
 RESTRICT="mirror"
 
-RDEPEND="|| (>=dev-java/sun-jre-bin-1.5.0 >=dev-java/sun-jdk-1.5.0)"
+RDEPEND=">=virtual/jre-1.5.0"
 DEPEND="${DEPEND}"
 
 S="${WORKDIR}/openproj-${PV}"
@@ -34,5 +34,5 @@ src_install() {
 	# Symlink the laucher script
 	dosym ${installDir}/openproj.sh /usr/bin/openproj
 	# Symlink the directory and the jar to have them without version number
-        dosym ${installDir} /opt/openproj
+	dosym ${installDir} /opt/openproj
 }

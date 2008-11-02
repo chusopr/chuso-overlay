@@ -1,0 +1,3 @@
+dev-games/opennel:nosound - Disable sound support
+dev-util/kylix-enterprise-bin:dbexpress - Enable support for DBExpress databases
+dev-util/kylix-enterprise-bin:informix - Enable support for Informix databases

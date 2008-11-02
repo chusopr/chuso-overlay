@@ -1,5 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
 inherit eutils
 
@@ -11,7 +12,7 @@ HOMEPAGE="http://homepage.hispeed.ch/rscheidegger/dri_experimental/s3tc_index.ht
 SRC_URI="http://homepage.hispeed.ch/rscheidegger/dri_experimental/${MY_P}.tar.gz"
 LICENSE="S3TC"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS="-* x86"
 IUSE=""
 
 RESTRICT="mirror"
@@ -25,7 +26,7 @@ S="${WORKDIR}/${MY_PN}"
 pkg_setup()
 {
 	ewarn "ATTENTION!!!"
-	ewarn "This library included patented algorithms so you may be infringing"
+	ewarn "This library includes patented algorithms so you may be infringing"
 	ewarn "patent rights by emerging it."
 	ewarn "It's your responsibility to be sure to be in a right legal situation"
 	ewarn "before emerging this package."
@@ -33,16 +34,16 @@ pkg_setup()
 }
 
 src_install() {
-	emake DESTDIR=${D} install || die "make install failed"
+	emake DESTDIR="${D}" install || die "make install failed"
 }
 
 pkg_postinst()
 {
 	ewarn "ATTENTION!!!"
-	ewarn "This library included patented algorithms so you may be infringing"
+	ewarn "This library includes patented algorithms so you may be infringing"
 	ewarn "patent rights by emerging it."
-	ewarn "It's your responsibility to be sure to be in the right legal	situation."
-	ewarn "If don't, please remove this package, God kills a kitten every time"
+	ewarn "It's your responsibility to be sure to be in the right legal situation."
+	ewarn "If you are not, please remove this package, God kills a kitten every time"
 	ewarn "you piracy Software."
 	ewarn "ATTENTION!!!"
 }

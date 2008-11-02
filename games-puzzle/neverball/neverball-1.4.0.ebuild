@@ -1,4 +1,4 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -14,7 +14,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="!games-puzzle/neverball-svn
-    >=media-libs/libsdl-1.2
+	>=media-libs/libsdl-1.2
 	>=media-libs/sdl-mixer-1.2.5
 	>=media-libs/sdl-image-1.2.2
 	media-libs/sdl-ttf
@@ -33,7 +33,7 @@ src_unpack() {
 		Makefile \
 		|| die "sed Makefile failed"
 	find data/ -type f -exec chmod a-x \{\} \;
-	epatch ${FILESDIR}/${PN}-balls-cfg.patch
+	epatch "${FILESDIR}/${PN}-balls-cfg.patch"
 }
 
 src_compile() {

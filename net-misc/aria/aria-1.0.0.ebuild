@@ -1,12 +1,12 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/www/viewcvs.gentoo.org/raw_cvs/gentoo-x86/net-misc/aria/Attic/aria-1.0.0.ebuild,v 1.13 2007/05/11 15:47:44 armin76 dead $
+# $Header: /var/www/viewcvs.gentoo.org/raw_cvs/gentoo-x86/net-misc/aria/Attic/aria-1.0.0.ebuild,v 1.13 2008/05/11 15:47:44 armin76 dead $
 
 inherit eutils
 
 IUSE="nls"
 
-DESCRIPTION="Aria is a download manager with a GTK+ GUI, it downloads files from the Internet via HTTP/HTTPS or FTP."
+DESCRIPTION="Aria is a download manager with a GTK+ GUI."
 HOMEPAGE="http://aria.rednoah.com"
 SRC_URI="mirror://sourceforge/${PN}-rpm/${P}.tar.bz2"
 
@@ -41,7 +41,7 @@ src_compile() {
 src_install() {
 	einstall || die
 
-	dodoc AUTHORS README* NEWS ChangeLog TODO COPYING
+	dodoc AUTHORS README* NEWS ChangeLog TODO
 	touch "${D}"/usr/share/aria/ftp_proxy.aria
 	touch "${D}"/usr/share/aria/gui.aria
 	touch "${D}"/usr/share/aria/history.aria

@@ -17,7 +17,7 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}
 
 src_unpack() {
-	cp ${DISTDIR}/${A} ${S}/${PN} || die
+	cp "${DISTDIR}/${A}" "${S}/${PN}" || die
 }
 
 src_install() {
