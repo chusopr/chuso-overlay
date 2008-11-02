@@ -11,7 +11,7 @@ SRC_URI="http://download.borlandforum.com/kylix/Kylix3Trial/kylix3_trial.tar.gz
 		 ftp://ftpd.borland.com/download/kylix/k3/kylix3_trial.tar.gz"
 		 #ftp://ftpd.borland.com/download/kylix/k3/k3_trial_update_catalog.tar.gz
 		 #ftp://ftpd.borland.com/download/kylix/k3/k3_proenttrial_update_float_locale.tar.gz
-LICENSE="Shareware"
+LICENSE="kylix3_trial"
 SLOT="0"
 KEYWORDS="x86 -*"
 #RESTRICT="fetch nostrip"
