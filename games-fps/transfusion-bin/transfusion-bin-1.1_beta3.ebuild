@@ -45,6 +45,8 @@ src_install() {
 	games_make_wrapper ${MY_PN} ./${MY_PN}-glx "${GAMES_PREFIX_OPT}/${MY_PN}"
 	make_desktop_entry ${MY_PN} "Transfusion" ${MY_PN}
 
+	epatch "${FILESDIR}/${PN}_userconf.patch"
+
 	chmod ug+x "${D}/${GAMES_PREFIX_OPT}/${MY_PN}/${MY_PN}-glx"
 	prepgamesdirs
 }

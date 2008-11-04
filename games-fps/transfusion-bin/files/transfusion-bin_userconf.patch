@@ -1,0 +1,24 @@
+--- ../../image/usr/games/bin/transfusion	2008-11-02 16:19:37.000000000 +0100
++++ ../../image/usr/games/bin/transfusion	2008-11-03 17:07:50.000000000 +0100
+@@ -1,5 +1,20 @@
+ #!/bin/sh
+-cd "/opt/transfusion"
++
++source /etc/init.d/functions.sh
++
++tfdir="${HOME}/.transfusion"
++
++[[ ! -d "${HOME}/.transfusion" ]] && {
++	mkdir -p "${HOME}/.transfusion/basetf" &&
++	ln -s /opt/transfusion/transfusion-glx "${HOME}/.transfusion/transfusion-glx" &&
++	ln -s /opt/transfusion/basetf/* "${HOME}/.transfusion/basetf/" &&
++	einfo "User configuration created" || {
++		tfdir="/opt/transfusion"
++		eerror "Failed to create user configuration for user ${USER}"
++	}
++}
++
++cd "${tfdir}"
+ if [ -n "" ] ; then
+ 	if [ "${LD_LIBRARY_PATH+set}" = "set" ] ; then
+ 		export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:"

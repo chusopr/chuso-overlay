@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="https://nel.svn.sourceforge.net/svnroot/nel/trunk/@${PV}"
+ESVN_REPO_URI="https://nel.svn.sourceforge.net/svnroot/nel/trunk/nel@${PV}"
 
 inherit eutils games subversion
 
@@ -24,7 +24,7 @@ DEPEND="dev-libs/libxml2
 		openal? ( media-libs/freealut )
 		opengl? ( virtual/opengl )"
 
-S=${S}/nel
+S=${S}
 src_compile() {
 	mkdir cmake
 	cd cmake

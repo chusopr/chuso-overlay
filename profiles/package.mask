@@ -8,3 +8,7 @@
 #
 media-tv/zattoo-bin
 
+# Jesus Perez <chescu@gmail.com> (03 Nov 2008)
+# Need more testing
+#
+net-p2p/p2p-radio
