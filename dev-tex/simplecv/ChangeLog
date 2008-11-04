@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Nov 2008; Jesus Perez (h0m3r) <chescu@gmail.com> simplecv-1.6.ebuild:
+  Fixed RDEPEND
+
   02 Nov 2008; Jesús Pérez (h0m3r) <chescu@gmail.com> simplecv-1.6.ebuild:
   New ebuild for bug 227455
 

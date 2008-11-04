@@ -6,16 +6,14 @@ inherit latex-package
 
 DESCRIPTION="LaTeX class for simple curricula vitae."
 HOMEPAGE="http://www.ctan.org/tex-archive/help/Catalogue/entries/simplecv.html"
-SRC_URI="ftp://cam.ctan.org/tex-archive/macros/latex/contrib/simplecv.zip"
+SRC_URI="ftp://cam.ctan.org/tex-archive/macros/latex/contrib/${PN}.zip"
 
 LICENSE="LPPL-1.2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-RESTRICT="mirror"
-
-RDEPEND=""
+RDEPEND="virtual/tex-base"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
