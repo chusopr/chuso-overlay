@@ -1,0 +1,7 @@
+# ChangeLog for x11-apps/touchfreeze
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  12 Mar 2009; Jesús Pérez (h0m3r) <chescu@gmail.com> touchfreeze-0.2.3.ebuild:
+  New ebuild
+
