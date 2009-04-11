@@ -1,6 +1,10 @@
 # ChangeLog for media-tv/zattoo-bin
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  11 Apr 2009; Jesus Perez (h0m3r) <chescu@gmail.com>
+  zattoo-bin-3.2.4.15876.ebuild, zattoo-bin-3.3.0.17284.ebuild:
+  Updated dependecies: netscape-flash is now adobe-flash
 
   02 Nov 2008; Jesús Pérez (h0m3r) <chescu@gmail.com> ChangeLog:
   Version bump

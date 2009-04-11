@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -28,7 +28,7 @@ RDEPEND=">=sys-libs/glibc-2.4
 	media-libs/alsa-lib
 	net-dns/libidn
 	net-libs/xulrunner
-	net-www/netscape-flash
+	net-www/adobe-flash
 	dev-libs/nspr
 	dev-libs/openssl"
 
