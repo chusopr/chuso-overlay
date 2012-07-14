@@ -1,0 +1,13 @@
+# ChangeLog for kde-base/kdepim-runtime
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*kdepim-runtime-4.7.4 (14 Jul 2012)
+*kdepim-runtime-4.8.3-r2 (14 Jul 2012)
+*kdepim-runtime-4.8.4 (14 Jul 2012)
+
+  14 Jul 2012;  <h0m3r@gentoo.org> +., +files, +files/kdepim-imap-flags.patch,
+  +files/kdepim-runtime-4.8.3-fix-dav.patch, +kdepim-runtime-4.7.4.ebuild,
+  +kdepim-runtime-4.8.3-r2.ebuild, +kdepim-runtime-4.8.4.ebuild, +metadata.xml:
+  Added patch for KDE bug #291332
+

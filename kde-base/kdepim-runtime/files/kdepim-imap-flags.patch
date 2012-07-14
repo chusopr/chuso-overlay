@@ -1,0 +1,24 @@
+diff -ur agents/maildispatcher/sentactionhandler.cpp agents/maildispatcher/sentactionhandler.cpp
+--- agents/maildispatcher/sentactionhandler.cpp	2012-07-05 18:28:26.980244158 +0200
++++ agents/maildispatcher/sentactionhandler.cpp	2012-07-05 18:29:33.939407052 +0200
+@@ -59,7 +59,7 @@
+ 
+   const SentActionAttribute::Action::Type type = static_cast<SentActionAttribute::Action::Type>( job->property( "type" ).toInt() );
+   if ( type == SentActionAttribute::Action::MarkAsReplied ) {
+-    item.setFlag( Akonadi::MessageFlags::Replied );
++    item.setFlag( Akonadi::MessageFlags::Answered );
+   } else if ( type == SentActionAttribute::Action::MarkAsForwarded ) {
+     item.setFlag( Akonadi::MessageFlags::Forwarded );
+   }
+diff -ur resources/maildir/libmaildir/maildir.cpp resources/maildir/libmaildir/maildir.cpp
+--- resources/maildir/libmaildir/maildir.cpp	2012-07-05 18:28:25.281265398 +0200
++++ resources/maildir/libmaildir/maildir.cpp	2012-07-05 18:29:25.567511715 +0200
+@@ -619,7 +619,7 @@
+     Q_FOREACH( Akonadi::Item::Flag flag, flags ) {
+       if ( flag == Akonadi::MessageFlags::Forwarded )
+         mailDirFlags << QLatin1String("P");
+-      if ( flag == Akonadi::MessageFlags::Replied )
++      if ( flag == Akonadi::MessageFlags::Answered )
+         mailDirFlags << QLatin1String("R");
+       if ( flag == Akonadi::MessageFlags::Seen )
+         mailDirFlags << QLatin1String("S");
