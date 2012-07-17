@@ -1,8 +1,0 @@
-# ChangeLog for app-emulation/crossover-office-pro-bin
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  07 Mar 2009; Jesús Pérez (h0m3r) <chescu@gmail.com>
-  crossover-office-pro-bin-7.1.0.ebuild:
-  New ebuild
-
