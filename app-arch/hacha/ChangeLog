@@ -3,6 +3,9 @@
 # $Header: $
 
   23 Jul 2012; Jesús Pérez (chuso) <overlay@chuso.net> hacha-1.1.ebuild:
+  Added ~amd64 KEYWORD.
+
+  23 Jul 2012; Jesús Pérez (chuso) <overlay@chuso.net> hacha-1.1.ebuild:
   Updated SRC_URI.
 
   02 Nov 2008; Jesús Pérez (h0m3r) <chescu@gmail.com> hacha-1.1.ebuild:
