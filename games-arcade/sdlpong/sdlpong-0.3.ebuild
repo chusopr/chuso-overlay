@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/games-arcade/sdlpong/sdlpong-0.3.ebuild,v 1.1 2008/01/05 16:18:02 wolf31o2 Exp $
 
@@ -10,13 +10,14 @@ SRC_URI="mirror://sourceforge/uninspiredsoft/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RESTRICT="mirror"
 
-DEPEND=">=media-libs/libsdl-1.2
+RDEPEND=">=media-libs/libsdl-1.2
 	>=media-libs/sdl-image-1.2"
+DEPEND=${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
