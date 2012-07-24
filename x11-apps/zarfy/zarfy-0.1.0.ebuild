@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -14,7 +14,6 @@ DEPEND="=x11-libs/gtk+-2*
 	x11-libs/libXrandr
 	x11-libs/libXrender"
 RDEPEND="${DEPEND}"
-
 
 src_unpack()
 {
