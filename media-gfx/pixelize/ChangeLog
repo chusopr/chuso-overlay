@@ -1,6 +1,10 @@
 # ChangeLog for media-gfx/pixelize
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  24 Jul 2012; Jesús Pérez (chuso) <overlay@chuso.net> metadata.xml,
+  pixelize-0.5.ebuild:
+  Added ~amd64 KEYWORD and fixed URLs.
 
   02 Nov 2008; Jesús Pérez (h0m3r) <chescu@gmail.com> pixelize-0.5.ebuild:
   New ebuild for bug 96429
