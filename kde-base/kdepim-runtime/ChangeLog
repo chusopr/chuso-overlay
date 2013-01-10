@@ -3,6 +3,10 @@
 # $Header: $
 
   10 Jan 2013; Jesús Pérez (Chuso) <overlay@chuso.net>
+  -kdepim-runtime-4.9.2.ebuild:
+  Removed kde-base/kdepim-runtime-4.9.2
+
+  10 Jan 2013; Jesús Pérez (Chuso) <overlay@chuso.net>
   -kdepim-runtime-4.9.1.ebuild:
   Removed kde-base/kdepim-runtime-4.9.1
 
