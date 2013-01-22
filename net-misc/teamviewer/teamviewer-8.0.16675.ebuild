@@ -52,7 +52,7 @@ src_install() {
 
 	make_desktop_entry ${PN} TeamViewer ${PN}
 
-	newinitd "${FILESDIR}/teamviewerd.rc ${PN}"
+	newinitd "${FILESDIR}/teamviewerd.rc" ${PN}
 }
 
 pkg_postinst() {
