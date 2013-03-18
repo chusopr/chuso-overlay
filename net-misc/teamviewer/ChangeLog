@@ -1,9 +1,0 @@
-  22 Jan 2013; Jesús Pérez (Chuso) <overlay@chuso.net>
-  teamviewer-8.0.16675.ebuild:
-  Fixed typo.
-
-*teamviewer-8.0.16675 (15 Jan 2013)
-
-  15 Jan 2013; Jesús Pérez (Chuso) <overlay@chuso.net> +., +files,
-  +files/teamviewerd.rc, +metadata.xml, +teamviewer-8.0.16675.ebuild:
-  Added net-misc/teamviewer-8.0.16675.
