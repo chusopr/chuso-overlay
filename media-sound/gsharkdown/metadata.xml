@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+	<email>maintainer-needed@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">gSharkDown is a easy to use Gtk-based desktop application for the Linux operating system, developed to play and download music from the grooveshark webservice. It is well integrated in the GNOME desktop and is build on top of the groove.py library from the groove-dl application from jacktheripper51 hosted @ github.</longdescription>
+</pkgmetadata>
