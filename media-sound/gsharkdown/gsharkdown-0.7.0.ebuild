@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-python/pylast/pylast-0.5.11.ebuild,v 1.2 2012/05/29 17:11:23 jdhore Exp $
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils
 
-DESCRIPTION="gSharkDown is a GNOME desktop application for downloading and playing audio files from the grooveshark.com service"
+DESCRIPTION="GNOME desktop application for downloading and playing audio files from the grooveshark.com service"
 HOMEPAGE="http://${PN}.bultux.org"
 SRC_URI="https://bitbucket.org/vkolev/${PN}/get/${PN}_${PV}.tar.bz2"
 
