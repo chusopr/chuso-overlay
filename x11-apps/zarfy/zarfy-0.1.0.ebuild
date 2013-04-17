@@ -1,7 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+inherit eutils
 DESCRIPTION="GUI to libXrandr"
 HOMEPAGE="http://zarfy.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
@@ -15,12 +16,7 @@ DEPEND="=x11-libs/gtk+-2*
 	x11-libs/libXrender"
 RDEPEND="${DEPEND}"
 
-src_unpack()
-{
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${PV}-distdir.patch"
-}
+PATCHES=( "${FILESDIR}/${PV}-distdir.patch" )
 
 src_install()
 {
