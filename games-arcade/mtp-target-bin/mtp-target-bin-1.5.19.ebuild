@@ -1,7 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/mtp-target-bin/mtp-target-bin-1.5.18.ebuild,v 1.1 2008/08/14 16:42:43 mr_bones_ Exp $
+# $Header: $
 
+EAPI=5
 inherit games
 
 MY_PN=${PN/-bin}
@@ -15,9 +16,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="strip mirror"
-QA_TEXTRELS=${GAMES_PREFIX_OPT:1}/${PN}/lib/libfmodex.so
-QA_EXECSTACK=${GAMES_PREFIX_OPT:1}/${PN}/lib/libfmodex.so
+RESTRICT="strip"
+
+QA_PREBUILT="${GAMES_PREFIX_OPT:1}/${PN}/lib/libfmodex.so
+	${GAMES_PREFIX_OPT:1}/${PN}/bin/client"
 
 DEPEND=""
 RDEPEND="dev-libs/STLport
@@ -26,14 +28,14 @@ RDEPEND="dev-libs/STLport
 	x11-libs/libXmu
 	virtual/opengl
 	=media-libs/freetype-2*
-	media-libs/jpeg
+	virtual/jpeg
 	dev-lang/lua"
 
 S=${WORKDIR}/${MY_PN}
 
 src_install() {
 	insinto "${GAMES_PREFIX_OPT}/${PN}/data"
-	doins -r data/* client/mtp_target_default.cfg || die "doins failed"
+	doins -r data/* client/mtp_target_default.cfg
 	insinto "${GAMES_PREFIX_OPT}/${PN}/bin"
 	exeinto "${GAMES_PREFIX_OPT}/${PN}/bin"
 	doexe client/client
