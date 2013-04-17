@@ -1,8 +1,0 @@
-# ChangeLog for net-p2p/kollection
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  02 Nov 2008; Jesús Pérez (h0m3r) <chescu@gmail.com>
-  kollection-0.3.5.ebuild:
-  New ebuild for bug 219382
-
