@@ -1,0 +1,5 @@
+*libwww-5.4.0-r8 (18 Apr 2013)
+
+  18 Apr 2013; Jesús Pérez (Chuso) <overlay@chuso.net> +.,
+  +libwww-5.4.0-r8.ebuild, +metadata.xml:
+  Added net-libs/libwww.
