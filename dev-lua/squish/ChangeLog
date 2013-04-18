@@ -1,0 +1,5 @@
+*squish-1.11 (18 Apr 2013)
+
+  18 Apr 2013; Jesús Pérez (Chuso) <overlay@chuso.net> +., +files,
+  +files/include_limits.patch, +metadata.xml, +squish-1.11.ebuild:
+  Added dev-lua/squish.
