@@ -1,0 +1,60 @@
+diff -wurN luabind-0.9.1.orig/luabind/detail/call_function.hpp luabind-0.9.1/luabind/detail/call_function.hpp
+--- luabind-0.9.1.orig/luabind/detail/call_function.hpp	2010-08-31 15:24:52.000000000 +0200
++++ luabind-0.9.1/luabind/detail/call_function.hpp	2013-04-18 12:12:42.178518840 +0200
+@@ -323,7 +323,8 @@
+ 
+ #endif // LUABIND_CALL_FUNCTION_HPP_INCLUDED
+ 
+-#elif BOOST_PP_ITERATION_FLAGS() == 1
++#else
++#if BOOST_PP_ITERATION_FLAGS() == 1
+ 
+ #define LUABIND_TUPLE_PARAMS(z, n, data) const A##n *
+ #define LUABIND_OPERATOR_PARAMS(z, n, data) const A##n & a##n
+@@ -342,6 +343,7 @@
+ #else
+ 		tuple_t args(BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), &a));
+ #endif
++#endif
+ 		typedef typename boost::mpl::if_<boost::is_void<Ret>
+ 			, luabind::detail::proxy_function_void_caller<boost::tuples::tuple<BOOST_PP_ENUM(BOOST_PP_ITERATION(), LUABIND_TUPLE_PARAMS, _)> >
+ 			, luabind::detail::proxy_function_caller<Ret, boost::tuples::tuple<BOOST_PP_ENUM(BOOST_PP_ITERATION(), LUABIND_TUPLE_PARAMS, _)> > >::type proxy_type;
+diff -wurN luabind-0.9.1.orig/luabind/detail/call_member.hpp luabind-0.9.1/luabind/detail/call_member.hpp
+--- luabind-0.9.1.orig/luabind/detail/call_member.hpp	2010-08-31 15:24:52.000000000 +0200
++++ luabind-0.9.1/luabind/detail/call_member.hpp	2013-04-18 12:11:13.714514893 +0200
+@@ -316,7 +316,8 @@
+ 
+ #endif // LUABIND_CALL_MEMBER_HPP_INCLUDED
+ 
+-#elif BOOST_PP_ITERATION_FLAGS() == 1
++#else
++#if BOOST_PP_ITERATION_FLAGS() == 1
+ 
+ #define LUABIND_TUPLE_PARAMS(z, n, data) const A##n *
+ #define LUABIND_OPERATOR_PARAMS(z, n, data) const A##n & a##n
+@@ -333,6 +334,7 @@
+ #else
+ 		tuple_t args(BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), &a));
+ #endif
++#endif
+ 
+ 		typedef typename boost::mpl::if_<boost::is_void<R>
+ 			, luabind::detail::proxy_member_void_caller<boost::tuples::tuple<BOOST_PP_ENUM(BOOST_PP_ITERATION(), LUABIND_TUPLE_PARAMS, _)> >
+diff -wurN luabind-0.9.1.orig/luabind/wrapper_base.hpp luabind-0.9.1/luabind/wrapper_base.hpp
+--- luabind-0.9.1.orig/luabind/wrapper_base.hpp	2010-08-31 15:24:52.000000000 +0200
++++ luabind-0.9.1/luabind/wrapper_base.hpp	2013-04-18 12:13:34.561521177 +0200
+@@ -89,7 +89,8 @@
+ 
+ #endif // LUABIND_WRAPPER_BASE_HPP_INCLUDED
+ 
+-#elif BOOST_PP_ITERATION_FLAGS() == 1
++#else
++#if BOOST_PP_ITERATION_FLAGS() == 1
+ 
+ #define LUABIND_TUPLE_PARAMS(z, n, data) const A##n *
+ #define LUABIND_OPERATOR_PARAMS(z, n, data) const A##n & a##n
+@@ -188,3 +189,4 @@
+ #undef N
+ 
+ #endif
++#endif

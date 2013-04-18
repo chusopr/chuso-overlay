@@ -1,0 +1,5 @@
+*luabind-0.9.1 (18 Apr 2013)
+
+  18 Apr 2013; Jesús Pérez (Chuso) <overlay@chuso.net> +., +files,
+  +files/boost_bug_6631.patch, +luabind-0.9.1.ebuild, +metadata.xml:
+  Added dev-cpp/luabind.
