@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>maintainer-wanted</herd>
+	<use>
+		<flag name="3d">3D support</flag>
+		<flag name="audio">Audio engine support</flag>
+		<flag name="cegui">CEGUI renderer support</flag>
+		<flag name="client">Client support</flag>
+		<flag name="coverage">Coverage support</flag>
+		<flag name="dashboard">Build dashboard</flag>
+		<flag name="external">Use external</flag>
+		<flag name="fmod">fmod support</flag>
+		<flag name="georges">GEORGES form management support</flag>
+		<flag name="gles">OpenGL ES support</flag>
+		<flag name="ligo">LIGO landscape management support</flag>
+		<flag name="log">Enable logging</flag>
+		<flag name="logic">LOGIC engine support</flag>
+		<flag name="login-system">Build NeLNS login system tools</flag>
+		<flag name="nelns">Build NeL network services</flag>
+		<flag name="network">networking support</flag>
+		<flag name="pacs">PACS collision engine support</flag>
+		<flag name="ryzom">Build Ryzom</flag>
+		<flag name="samples">Build examples</flag>
+		<flag name="server">Server support</flag>
+		<flag name="snowballs">Build Snowballs</flag>
+		<flag name="squish">Build squish tests</flag>
+		<flag name="stlport">STLport support</flag>
+		<flag name="tests">Build tests</flag>
+		<flag name="tools">Build tools</flag>
+	</use>
 </pkgmetadata>

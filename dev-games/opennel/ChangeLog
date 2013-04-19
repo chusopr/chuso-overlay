@@ -1,10 +1,15 @@
 # ChangeLog for dev-games/opennel
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*opennel-0.8.0 (19 Apr 2013)
+
+  19 Apr 2013;  <chuso@gentoo.org> +files, +files/std_namespace.patch,
+  +opennel-0.8.0.ebuild, metadata.xml:
+  Added dev-games/opennel-0.8.0.
 
   07 Mar 2009; Jesús Pérez (h0m3r) <chescu@gmail.com> opennel-722.ebuild:
   Added 722 svn release.
 
   03 Nov 2008; Jesús Pérez (h0m3r) <chescu@gmail.com> opennel-708.ebuild:
   Wrong , didn't compile, fixed ${S} and ${ESVN_REPO_URI}
-
