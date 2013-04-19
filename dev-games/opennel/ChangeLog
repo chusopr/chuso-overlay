@@ -2,6 +2,9 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Apr 2013;  <chuso@gentoo.org> -opennel-708.ebuild:
+  Removed dev-games/opennel-708.
+
 *opennel-0.8.0 (19 Apr 2013)
 
   19 Apr 2013;  <chuso@gentoo.org> +files, +files/std_namespace.patch,
