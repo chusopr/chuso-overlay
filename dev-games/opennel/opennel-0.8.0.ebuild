@@ -27,6 +27,7 @@ RDEPEND="dev-libs/libxml2
 		virtual/jpeg
 		x11-libs/libX11
 		x11-libs/libXext
+		x11-misc/xdg-utils
 		nelns? (
 			net-misc/curl
 			dev-db/mysql
@@ -64,6 +65,8 @@ RDEPEND="dev-libs/libxml2
 DEPEND="${RDEPEND}
 		dev-util/boost-build"
 
+S="${WORKDIR}/${P}/code"
+
 pkg_pretend() {
 	use nelns && use !network && die "nelns flag requires network flag"
 	use audio && ( use !ligo || use !georges) && die "audio flag requires georges and ligo flags"
@@ -78,10 +81,10 @@ pkg_pretend() {
 
 src_prepare() {
 	epatch "${FILESDIR}/std_namespace.patch" || die
+	sed -i 's%/etc/alternatives/x-www-browser%xdg-open%' code/nel/src/misc/common.cpp || die
 }
 
 src_configure() {
-	S="${WORKDIR}/${P}/code"
 	local mycmakeargs=(
 		$(cmake-utils_use_with log LOGGING)
 		$(cmake-utils_use_with coverage COVERAGE)
