@@ -30,7 +30,6 @@ EANT_DOC_TARGET="docs"
 
 java_prepare() {
 	mkdir libs
-	echo "jar.tigase-xmltools=$(java-pkg_getjar tigase-xmltools tigase-xmltools.jar)" > conf/local.properties
 	epatch "${FILESDIR}/xmltoolsjar.patch"
 
 	sed -i -e "s:libs=libs:xmltoolsjar=$(java-pkg_getjar tigase-xmltools tigase-xmltools.jar):" build.properties
