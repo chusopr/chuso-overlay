@@ -4,7 +4,7 @@
 
 EAPI=5
 
-JAVA_PKG_IUSE="source"
+JAVA_PKG_IUSE="doc source"
 
 EGIT_REPO_URI="https://repository.tigase.org/git/${PN}"
 EGIT_COMMIT=${P}
@@ -25,11 +25,14 @@ DEPEND=">=dev-java/ant-1.7
 
 RDEPEND=">=virtual/jre-1.6.0"
 
-src_prepare() {
+EANT_DOC_TARGET="docs"
+
+java_prepare() {
 	mkdir libs
 }
 
 src_install() {
 	java-pkg_dojar jars/*.jar
+	use doc && java-pkg_dojavadoc docs-tigase-xmltools/api
 	use source && java-pkg_dosrc src/main/java/
 }
