@@ -4,7 +4,7 @@
 
 EAPI=5
 
-JAVA_PKG_IUSE="doc source"
+JAVA_PKG_IUSE="source"
 
 EGIT_REPO_URI="https://repository.tigase.org/git/${PN}"
 EGIT_COMMIT=${P}
@@ -27,4 +27,9 @@ RDEPEND=">=virtual/jre-1.6.0"
 
 src_prepare() {
 	mkdir libs
+}
+
+src_install() {
+	java-pkg_dojar jars/*.jar
+	use source && java-pkg_dosrc src/main/java/
 }
