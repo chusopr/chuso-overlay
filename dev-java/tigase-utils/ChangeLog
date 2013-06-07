@@ -1,0 +1,5 @@
+*tigase-utils-3.3.11 (07 Jun 2013)
+
+  07 Jun 2013;  <chuso@gentoo.org> +., +files, +files/xmltoolsjar.patch,
+  +metadata.xml, +tigase-utils-3.3.11.ebuild:
+  Added dev-java/tigase-utils.
