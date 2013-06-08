@@ -1,3 +1,8 @@
+*jul-to-slf4j-1.6.6 (08 Jun 2013)
+
+  08 Jun 2013;  <chuso@gentoo.org> +jul-to-slf4j-1.6.6.ebuild:
+  Added dev-java/jul-to-slf4j-1.6.6.
+
 *jul-to-slf4j-1.5.11 (08 Jun 2013)
 
   08 Jun 2013;  <chuso@gentoo.org> +., +files, +files/build.xml,
