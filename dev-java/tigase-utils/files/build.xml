@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tigase-utils" default="jar">
+	<target name="compile">
+		<mkdir dir="build"/>
+		<javac srcdir="." destdir="build" classpath="${gentoo.classpath}">
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="tigase-utils.jar" basedir="build"/>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<mkdir dir="docs"/>
+		<javadoc sourcepath="src/main/java" destdir="docs" classpath="${gentoo.classpath}"/>
+	</target>
+
+</project>
