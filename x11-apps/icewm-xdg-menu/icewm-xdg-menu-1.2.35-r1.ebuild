@@ -8,11 +8,11 @@ DESCRIPTION="Generates IceWM menus from XDG entries"
 HOMEPAGE="http://www.icewm.org/"
 
 MY_P="${P/xdg-menu/xdgmenu}"
-FR="18"
-FV="7.fc18"
-SRC_URI="mirror://fedora/releases/${FR}/Everything/i386/os/Packages/i/${MY_P}-${FV}.noarch.rpm"
+FR="9"
+FV="4.fc9"
+SRC_URI="mirror://fedora/releases/${FR}/Everything/i386/os/Packages/${MY_P}-${FV}.i386.rpm"
 
-LICENSE="public-domain"
+LICENSE="GPL-2"
 
 SLOT="0"
 
@@ -20,8 +20,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 IUSE=""
 
-DEPEND="dev-python/pyxdg"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-python/pyxdg"
 
 src_install() {
 	dobin usr/bin/icewm-xdg-menu
