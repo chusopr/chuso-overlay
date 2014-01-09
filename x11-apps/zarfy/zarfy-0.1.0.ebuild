@@ -4,7 +4,7 @@
 
 inherit eutils
 DESCRIPTION="GUI to libXrandr"
-HOMEPAGE="http://zarfy.sourceforge.net/"
+HOMEPAGE="http://sourceforge.net/projects/zarfy/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
