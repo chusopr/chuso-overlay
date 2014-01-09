@@ -1,19 +1,17 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/sdlpong/sdlpong-0.3.ebuild,v 1.1 2008/01/05 16:18:02 wolf31o2 Exp $
+# $Header: $
 
 inherit games
 
 DESCRIPTION="An SDL Pong clone"
-HOMEPAGE="http://freshmeat.net/projects/sdlpong/"
+HOMEPAGE="http://sourceforge.net/projects/uninspiredsoft/"
 SRC_URI="mirror://sourceforge/uninspiredsoft/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-RESTRICT="mirror"
 
 RDEPEND=">=media-libs/libsdl-1.2
 	>=media-libs/sdl-image-1.2"
@@ -24,7 +22,7 @@ src_unpack() {
 	cd "${S}"
 
 	sed -i \
-		-e "s#gfx/#${GAMES_DATADIR}/${PN}/gfx/#g" \
+		"s#gfx/#${GAMES_DATADIR}/${PN}/gfx/#g" \
 		video.c \
 		|| die "sed failed"
 }
