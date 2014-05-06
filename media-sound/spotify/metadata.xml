@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <use>
+	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs).</flag>
+	<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
+	<flag name="external-libav">Pull media-video/libav:0/0.8 dependency instead of compiling a bundled one for local files playback.</flag>
+    <flag name="pax_kernel">Triggers a paxmarking of the main Spotify binary</flag>
+	<flag name="pic">Force shared libraries to be built as PIC (this is slower).</flag>
+  </use>
+</pkgmetadata>
+

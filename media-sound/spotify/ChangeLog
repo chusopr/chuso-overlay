@@ -1,0 +1,5 @@
+*spotify-0.9.4.183-r5 (06 May 2014)
+
+  06 May 2014; Jesús Pérez (Chuso) <overlay@chuso.net> +metadata.xml,
+  +spotify-0.9.4.183-r5.ebuild:
+  Added media-sound/spotify with bundled libav for local files playback.
