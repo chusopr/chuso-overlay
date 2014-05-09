@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: This ebuild is from Lua overlay; Bumped by mva; $
+# $Header: $
 
 EAPI="5"
 
@@ -13,9 +13,6 @@ SRC_URI="http://lib${PN}.googlecode.com/files/${P}.zip"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-RDEPEND="dev-lang/lua"
-DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/include_limits.patch"
