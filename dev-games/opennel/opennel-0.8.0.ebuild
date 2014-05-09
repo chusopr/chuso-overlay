@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -51,7 +51,7 @@ RDEPEND="dev-libs/libxml2
 			)
 		)
 		tests? ( dev-util/cpptest )
-		tools? ( squish? ( dev-lua/squish ) )
+		tools? ( squish? ( media-libs/squish ) )
 		client? ( media-libs/freetype )
 		virtual/jpeg
 		opengl? ( virtual/opengl )
@@ -64,8 +64,6 @@ RDEPEND="dev-libs/libxml2
 
 DEPEND="${RDEPEND}
 		dev-util/boost-build"
-
-S="${WORKDIR}/${P}/code"
 
 pkg_pretend() {
 	use nelns && use !network && die "nelns flag requires network flag"
@@ -85,6 +83,7 @@ src_prepare() {
 }
 
 src_configure() {
+	S="${WORKDIR}/${P}/code"
 	local mycmakeargs=(
 		$(cmake-utils_use_with log LOGGING)
 		$(cmake-utils_use_with coverage COVERAGE)
