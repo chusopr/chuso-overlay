@@ -1,0 +1,41 @@
+diff -rwu opennel-0.8.0/code/CMakeModules/FindFreeType.cmake opennel-0.8.0/code/CMakeModules/FindFreeType.cmake
+--- opennel-0.8.0/code/CMakeModules/FindFreeType.cmake	2014-05-09 13:30:58.126427734 +0200
++++ opennel-0.8.0/code/CMakeModules/FindFreeType.cmake	2014-05-09 13:37:53.084068083 +0200
+@@ -11,7 +11,7 @@
+ 
+ 
+ FIND_PATH(FREETYPE_INCLUDE_DIRS
+-  freetype
++  freetype.h
+   PATHS
+   $ENV{FREETYPE_DIR}/include
+   /usr/local/include
+@@ -27,6 +27,7 @@
+ FIND_PATH(FREETYPE_ADDITIONAL_INCLUDE_DIR
+   ft2build.h
+   PATHS
++  ${FREETYPE_INCLUDE_DIRS}
+   /usr/local/include
+   /usr/include
+   /sw/include
+diff -rwu opennel-0.8.0/code/nel/src/3d/font_generator.cpp opennel-0.8.0/code/nel/src/3d/font_generator.cpp
+--- opennel-0.8.0/code/nel/src/3d/font_generator.cpp	2014-05-09 13:31:21.505707884 +0200
++++ opennel-0.8.0/code/nel/src/3d/font_generator.cpp	2014-05-09 13:39:54.894353422 +0200
+@@ -29,7 +29,7 @@
+ 
+ #ifndef NL_DONT_USE_EXTERNAL_CODE
+ 
+-#include <freetype/freetype.h>
++#include <freetype.h>
+ 
+ // for freetype 2.0
+ #ifdef FTERRORS_H
+@@ -51,7 +51,7 @@
+ const char*  err_msg;
+ } ft_errors[] =
+ 
+-#include <freetype/fterrors.h>
++#include <fterrors.h>
+ 
+ using namespace NLMISC;
+ 

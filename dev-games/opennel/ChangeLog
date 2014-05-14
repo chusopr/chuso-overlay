@@ -1,6 +1,13 @@
 # ChangeLog for dev-games/opennel
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*opennel-0.8.0-r1 (14 May 2014)
+
+  14 May 2014; Jesús Pérez (Chuso) <overlay@chuso.net>
+  +files/freetype_path.patch, +opennel-0.8.0-r1.ebuild, -opennel-0.8.0.ebuild:
+  Patch freetype detection for OpenGL compilation. Add 3D drivers directory to
+  LDPATH.
 
   19 Apr 2013;  <chuso@gentoo.org> files/std_namespace.patch,
   opennel-0.8.0.ebuild:

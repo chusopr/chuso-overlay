@@ -79,6 +79,7 @@ pkg_pretend() {
 
 src_prepare() {
 	epatch "${FILESDIR}/std_namespace.patch" || die
+	epatch "${FILESDIR}/freetype_path.patch" || die
 	sed -i 's%/etc/alternatives/x-www-browser%xdg-open%' code/nel/src/misc/common.cpp || die
 }
 
@@ -160,4 +161,10 @@ src_configure() {
 
 	cmake-utils_src_configure
 	S="${WORKDIR}/${P}_build"
+}
+
+src_install() {
+	emake DESTDIR="${D}" install || die
+	echo "LDPATH=\"/usr/lib/nel\"" >> "${T}/99${PN}"
+	doenvd "${T}/99${PN}"
 }
