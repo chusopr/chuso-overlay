@@ -1,0 +1,22 @@
+diff -urw alpha.cpp alpha.cpp
+--- alpha.cpp	2013-04-18 16:01:28.751131320 +0200
++++ alpha.cpp	2013-04-18 16:01:00.349130053 +0200
+@@ -23,6 +23,7 @@
+ 	
+    -------------------------------------------------------------------------- */
+    
++#include <limits.h>
+ #include "alpha.h"
+ #include <algorithm>
+ 
+diff -urw singlecolourfit.cpp singlecolourfit.cpp
+--- singlecolourfit.cpp	2013-04-18 16:01:32.157131472 +0200
++++ singlecolourfit.cpp	2013-04-18 16:00:57.190129912 +0200
+@@ -23,6 +23,7 @@
+ 	
+    -------------------------------------------------------------------------- */
+    
++#include <limits.h>
+ #include "singlecolourfit.h"
+ #include "colourset.h"
+ #include "colourblock.h"
