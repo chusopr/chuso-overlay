@@ -1,9 +1,0 @@
-# Jesus Perez <chescu@gmail.com> (02 Oct 2008)
-# Stability issues
-#
-<media-tv/zattoo-bin-3.3.0.17284
-
-# Jakub Moc <jakub@gentoo.org> (27 Oct 2007)
-# Broken license. Asked upstream to address it.
-#
-media-tv/zattoo-bin
