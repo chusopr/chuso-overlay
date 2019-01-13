@@ -44,6 +44,7 @@ RDEPEND="dev-libs/libxml2
 			media-libs/libvorbis
 		)
 		3d? (
+			dev-util/cpptest
 			media-libs/freetype
 			opengl? (
 				x11-libs/libXxf86vm
@@ -67,7 +68,7 @@ DEPEND="${RDEPEND}
 
 pkg_pretend() {
 	use nelns && use !network && die "nelns flag requires network flag"
-	use audio && ( use !ligo || use !georges) && die "audio flag requires georges and ligo flags"
+	use audio && (use !3d || use !ligo || use !georges) && die "audio flag requires 3d, georges and ligo flags"
 	use client && use !network && die "client flag requires network flag"
 	use server && use !network && die "server flag requires network flag"
 	use ryzom && use client && use !audio && die "ryzom && client flags require audio and ryzom flags"
@@ -79,8 +80,12 @@ pkg_pretend() {
 
 src_prepare() {
 	epatch "${FILESDIR}/std_namespace.patch" || die
-	epatch "${FILESDIR}/freetype_path.patch" || die
+	#epatch "${FILESDIR}/freetype_path.patch" || die
+	epatch "${FILESDIR}/${P}-scope.patch" || die
+	epatch "${FILESDIR}/${P}-c11.patch" || die
 	sed -i 's%/etc/alternatives/x-www-browser%xdg-open%' code/nel/src/misc/common.cpp || die
+	sed -i 's% -ansi%%' code/CMakeModules/nel.cmake || die
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -149,14 +154,22 @@ src_configure() {
 		mycmakeargs=(
 			$mycmakeargs
 			$(cmake-utils_use_with ryzom RYZOM_CLIENT)
-			$(cmake-utils_use_with snowball SNOWBALL_CLIENT)
+			$(cmake-utils_use_with snowballs SNOWBALLS_CLIENT)
+		)
+
+	use 3d || use client &&
+		mycmakeargs=(
+			$mycmakeargs
+			-DFREETYPE_INCLUDE_DIRS=$(freetype-config --prefix)/include/freetype2
+			$(cmake-utils_use_with ryzom RYZOM_CLIENT)
+			$(cmake-utils_use_with snowballs SNOWBALLS_CLIENT)
 		)
 
 	use server &&
 		mycmakeargs=(
 			$mycmakeargs
 			$(cmake-utils_use_with ryzom RYZOM_SERVER)
-			$(cmake-utils_use_with snowball SNOWBALL_SERVER)
+			$(cmake-utils_use_with snowballs SNOWBALLS_SERVER)
 		)
 
 	cmake-utils_src_configure
