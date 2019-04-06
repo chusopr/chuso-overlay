@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ryzom/${PN}/archive/master.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-lang/lua
@@ -21,8 +21,7 @@ DEPEND="dev-lang/lua
 		dev-games/opennel[3d,audio,network]"
 
 # to confirm
-DEPEND="media-libs/fmod
-		dev-libs/libxml2
+DEPEND="dev-libs/libxml2
 		dev-games/opennel
 		dev-lang/lua
 		net-misc/curl
