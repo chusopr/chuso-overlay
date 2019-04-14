@@ -1,0 +1,243 @@
+#diff -ruw code/nel/src/misc/i18n.cpp code/nel/src/misc/i18n.cpp
+#--- code/nel/src/misc/i18n.cpp	2019-01-08 18:04:25.715817483 +0100
+#+++ code/nel/src/misc/i18n.cpp	2019-01-08 15:06:54.300955836 +0100
+#@@ -914,9 +914,9 @@
+# 
+# void CI18N::readTextBuffer(uint8 *buffer, uint size, ucstring &result, bool forceUtf8)
+# {
+#-	static uint8 utf16Header[] = {char(0xff), char(0xfe)};
+#-	static uint8 utf16RevHeader[] = {char(0xfe), char(0xff)};
+#-	static uint8 utf8Header[] = {char(0xef), char(0xbb), char(0xbf)};
+#+	static uint8 utf16Header[] = {uint8(0xff), uint8(0xfe)};
+#+	static uint8 utf16RevHeader[] = {uint8(0xfe), uint8(0xff)};
+#+	static uint8 utf8Header[] = {uint8(0xef), uint8(0xbb), uint8(0xbf)};
+# 
+# 	if (forceUtf8)
+# 	{
+diff -ruw code/nel/src/misc/words_dictionary.cpp code/nel/src/misc/words_dictionary.cpp
+--- code/nel/src/misc/words_dictionary.cpp	2019-01-08 18:04:25.745817796 +0100
++++ code/nel/src/misc/words_dictionary.cpp	2019-01-08 15:14:15.885560774 +0100
+@@ -251,7 +251,9 @@
+  */
+ inline CSString CWordsDictionary::makeResult( const CSString &key, const CSString &word )
+ {
+-	return key + ": " + word.c_str();
++		CSString toRet = key + CSString(": ");
++		toRet = toRet + word;
++		return toRet;
+ }
+ 
+ 
+diff -urN code/nel/include/nel/misc/diff_tool.h code/nel/include/nel/misc/diff_tool.h
+--- code/nel/include/nel/misc/diff_tool.h	2019-01-13 21:33:35.276919120 +0100
++++ code/nel/include/nel/misc/diff_tool.h	2019-01-14 15:58:55.983614148 +0100
+@@ -19,6 +19,8 @@
+ 
+ #include "i18n.h"
+ 
++using namespace std;
++
+ namespace STRING_MANAGER
+ {
+ 	const ucstring		nl("\r\n");
+diff -urN code/nel/tools/misc/make_sheet_id/make_sheet_id.cpp code/nel/tools/misc/make_sheet_id/make_sheet_id.cpp
+--- code/nel/tools/misc/make_sheet_id/make_sheet_id.cpp	2019-01-13 21:34:01.517142984 +0100
++++ code/nel/tools/misc/make_sheet_id/make_sheet_id.cpp	2019-01-14 12:37:32.789530559 +0100
+@@ -157,7 +157,7 @@
+ 		}
+ 		else
+ 		{
+-			if(fileTypeGet)
++			/*if(fileTypeGet)
+ 			{	
+ 				// insert the association (file type/file type id)
+ 				map<string,uint8>::iterator itFT = FileTypeToId.find(fileType);
+@@ -167,9 +167,9 @@
+ 				}
+ 			}
+ 			else
+-			{
++			{*/
+ 				nlwarning("Unknown file type for the file : %s",(*itIF).second.c_str());
+-			}
++			//}
+ 			++itIF;
+ 		}
+ 	}
+diff -urN code/ryzom/server/src/ai_service/child_container.h code/ryzom/server/src/ai_service/child_container.h
+--- code/ryzom/server/src/ai_service/child_container.h	2019-01-13 21:34:55.377606597 +0100
++++ code/ryzom/server/src/ai_service/child_container.h	2019-01-14 23:17:02.301560629 +0100
+@@ -422,7 +422,7 @@
+ template <class TChld>
+ TChld* CCont<TChld>::addChild(TChld* child)
+ {
+-	return addChild(child, getFirstFreeChild());
++	return this->addChild(child, getFirstFreeChild());
+ }
+ 
+ template <class TChld>
+diff -urN code/ryzom/server/src/ai_service/state_instance.h code/ryzom/server/src/ai_service/state_instance.h
+--- code/ryzom/server/src/ai_service/state_instance.h	2019-01-13 21:34:50.137561271 +0100
++++ code/ryzom/server/src/ai_service/state_instance.h	2019-01-15 01:46:43.015319809 +0100
+@@ -24,6 +24,7 @@
+ #include "event_manager.h"
+ #include "script_vm.h"
+ #include "ai_grp.h"
++#include "event_reaction_include.h"
+ 
+ class CStateMachine;
+ class CGroup;
+diff -urN code/ryzom/server/src/entities_game_service/mission_manager/mission_log.h code/ryzom/server/src/entities_game_service/mission_manager/mission_log.h
+--- code/ryzom/server/src/entities_game_service/mission_manager/mission_log.h	2019-01-13 21:34:57.397624081 +0100
++++ code/ryzom/server/src/entities_game_service/mission_manager/mission_log.h	2019-02-10 17:57:12.177789481 +0100
+@@ -61,11 +61,11 @@
+ #define MISDBG if ( !VerboseMissions ){} else MISLOG
+ 
+ // Syntax error logged to egs_mission.log
+-#define MISLOGSYNTAXERROR(_PHRASE_)				MISLOG("sline:%u SYNTAX ERROR %s : "_PHRASE_, line, script[0].c_str());
+-#define MISLOGSYNTAXERROR1(_PHRASE_,_PARAM_)	MISLOG("sline:%u SYNTAX ERROR %s : "_PHRASE_, line, script[0].c_str(), _PARAM_);
+-#define MISLOGERROR(_PHRASE_)						MISLOG("sline:%u ERROR %s : "_PHRASE_, line, script[0].c_str());
+-#define MISLOGERROR1(_PHRASE_,_PARAM_)				MISLOG("sline:%u ERROR %s : "_PHRASE_, line, script[0].c_str(), _PARAM_);
+-#define MISLOGERROR2(_PHRASE_,_PARAM1_,_PARAM2_)	MISLOG("sline:%u ERROR %s : "_PHRASE_, line, script[0].c_str(), _PARAM1_, _PARAM2_);
++#define MISLOGSYNTAXERROR(_PHRASE_)				MISLOG("sline:%u SYNTAX ERROR %s : ", line, script[0].c_str());
++#define MISLOGSYNTAXERROR1(_PHRASE_,_PARAM_)	MISLOG("sline:%u SYNTAX ERROR %s : ", line, script[0].c_str(), _PARAM_);
++#define MISLOGERROR(_PHRASE_)						MISLOG("sline:%u ERROR %s : ", line, script[0].c_str());
++#define MISLOGERROR1(_PHRASE_,_PARAM_)				MISLOG("sline:%u ERROR %s : ", line, script[0].c_str(), _PARAM_);
++#define MISLOGERROR2(_PHRASE_,_PARAM1_,_PARAM2_)	MISLOG("sline:%u ERROR %s : ", line, script[0].c_str(), _PARAM1_, _PARAM2_);
+ 
+ 
+ 
+diff -urN code/ryzom/server/src/entities_game_service/phrase_manager/fg_prospection_phrase.cpp code/ryzom/server/src/entities_game_service/phrase_manager/fg_prospection_phrase.cpp
+--- code/ryzom/server/src/entities_game_service/phrase_manager/fg_prospection_phrase.cpp	2019-01-13 21:34:53.947594222 +0100
++++ code/ryzom/server/src/entities_game_service/phrase_manager/fg_prospection_phrase.cpp	2019-02-10 21:03:00.448894870 +0100
+@@ -1924,7 +1924,11 @@
+ 			fields[FPos] = fields[FPos].replace( " ", "" );
+ 			CSString imageFilename = fields[FRegion] + "-" + fields[FPlace] + ".tga";
+ 			imageFilename = imageFilename.replace( " ", "" );
+-			CSString cmdLine = "makeDepositMap " + fields[FPos] + " " + pathName + imageFilename + " 1 600";
++			CSString cmdLine = "makeDepositMap " + fields[FPos];
++			cmdLine = cmdLine + " ";
++			cmdLine = cmdLine + pathName;
++			cmdLine = cmdLine + imageFilename;
++			cmdLine = cmdLine + " 1 600";
+ 			egs_feinfo( cmdLine.c_str() );
+ 			log.displayNL( ("\n\n<B><A HREF=\"" + imageFilename + "\">" + imageFilename + "</A></B>\n").c_str() );
+ 			ICommand::execute( cmdLine, log );
+diff -urN code/ryzom/server/src/logger_service/log_query.h code/ryzom/server/src/logger_service/log_query.h
+--- code/ryzom/server/src/logger_service/log_query.h	2019-01-13 21:35:00.367649800 +0100
++++ code/ryzom/server/src/logger_service/log_query.h	2019-02-11 01:06:35.487677882 +0100
+@@ -61,7 +61,7 @@
+ 	uint32		EndDate;	
+ };
+ 
+-const TTimeSlice FullTimeSlice = {0, ~0};
++const TTimeSlice FullTimeSlice = {(uint32)0, (uint32)~0};
+ 
+ /// Defile the complete selected time line
+ typedef std::vector<TTimeSlice>	TTimeLine;
+diff -urN code/ryzom/server/src/mail_forum_service/mail_forum_service.cpp code/ryzom/server/src/mail_forum_service/mail_forum_service.cpp
+--- code/ryzom/server/src/mail_forum_service/mail_forum_service.cpp	2019-01-13 21:35:04.277683679 +0100
++++ code/ryzom/server/src/mail_forum_service/mail_forum_service.cpp	2019-02-11 01:09:42.799783059 +0100
+@@ -179,7 +179,7 @@
+ 		++pt;
+ 
+ 	// file contents "$$$$" -> end of file marker, file is complete, can be deleted
+-	if (pt != '\0')
++	if (*pt != '\0')
+ 	{
+ 		CFile::deleteFile(file);
+ 
+diff -urN code/ryzom/server/src/pd_lib/pds_common.h code/ryzom/server/src/pd_lib/pds_common.h
+--- code/ryzom/server/src/pd_lib/pds_common.h	2019-01-13 21:35:00.707652745 +0100
++++ code/ryzom/server/src/pd_lib/pds_common.h	2019-01-14 23:10:26.057371651 +0100
+@@ -28,7 +28,7 @@
+ //
+ #include "pd_lib.h"
+ 
+-
++using namespace NLMISC;
+ 
+ /**
+  * Task Event Listener
+#diff -urN code/ryzom/server/src/persistant_data_service/db_manager.cpp code/ryzom/server/src/persistant_data_service/db_manager.cpp
+#--- code/ryzom/server/src/persistant_data_service/db_manager.cpp	2019-01-13 21:35:00.857654044 +0100
+#+++ code/ryzom/server/src/persistant_data_service/db_manager.cpp	2019-02-11 01:17:47.885244556 +0100
+#@@ -785,7 +785,7 @@
+# 
+# 	// add listener to task listeners
+# 	if (listener != NULL)
+#-		_TaskListeners[id] = std::make_pair<ITaskEventListener*, void*>(listener, arg);
+#+		_TaskListeners[id] = std::make_pair<ITaskEventListener*&, void*&>(listener, arg);
+# 
+# 	return *msgrbs;
+# }
+diff -urN code/ryzom/tools/leveldesign/csv_transform/csv_transform.cpp code/ryzom/tools/leveldesign/csv_transform/csv_transform.cpp
+--- code/ryzom/tools/leveldesign/csv_transform/csv_transform.cpp	2019-01-13 21:35:07.857714720 +0100
++++ code/ryzom/tools/leveldesign/csv_transform/csv_transform.cpp	2019-01-14 16:24:00.709271470 +0100
+@@ -191,7 +191,8 @@
+ 	void flush(const CSString &filename)
+ 	{
+ 		closeFooters();
+-		CSString str = fileHeader + fileBody + fileFooter;
++		CSString str = fileHeader + fileBody;
++		str = str + fileFooter;
+ 
+ 		NLMISC::COFile of(filename, false, true);
+ 		of.serialBuffer((uint8*)str.data(), (uint)str.size());
+#diff -urN code/ryzom/tools/pd_parser/parser.cpp code/ryzom/tools/pd_parser/parser.cpp
+#--- code/ryzom/tools/pd_parser/parser.cpp	2019-01-13 21:35:13.197761058 +0100
+#+++ code/ryzom/tools/pd_parser/parser.cpp	2019-01-14 15:40:57.692393557 +0100
+#@@ -1189,7 +1189,7 @@
+# 	uint	i;
+# 	for (i=0; i<Names.size(); ++i)
+# 	{
+#-		CurrentEnumNode->Values.push_back(make_pair<string, uint32>(Names[i], CurrentValue));
+#+		CurrentEnumNode->Values.push_back(make_pair<__gnu_cxx::__alloc_traits<std::allocator<std::__cxx11::basic_string<char> > >::value_type&, uint32&>(Names[i], CurrentValue));
+# 	}
+# 	if (parent != NULL)
+# 		++(parent->CurrentValue);
+#@@ -1214,7 +1214,7 @@
+# 		CurrentValue = 0;
+# 	}
+# 
+#-	CurrentEnumNode->Values.push_back(make_pair<string, uint32>(Name, CurrentValue));
+#+	CurrentEnumNode->Values.push_back(make_pair<string&, uint32&>(Name, CurrentValue));
+# 
+# 	return true;
+# }
+#@@ -1238,7 +1238,7 @@
+# 
+# 	if (!EndRange.empty())
+# 	{
+#-		CurrentEnumNode->Values.push_back(make_pair<string, uint32>(EndRange, CurrentValue));
+#+		CurrentEnumNode->Values.push_back(make_pair<string&, uint32&>(EndRange, CurrentValue));
+# 	}
+# 
+# 	return true;
+#@@ -4709,7 +4709,7 @@
+# 		CClassNode	*cnd;
+# 		if ( (tnd = getTypeNode(type, false)) )
+# 		{
+#-			pair<map<string, CParseNode*>::iterator, bool>	res = params.insert(make_pair<string, CParseNode*>(name, tnd));
+#+			pair<map<string, CParseNode*>::iterator, bool>	res = params.insert(make_pair<string&, CTypeNode*&>(name, tnd));
+# 			if (!res.second)
+# 				error("log parameter '"+name+"' already defined");
+# 
+#@@ -4723,7 +4723,7 @@
+# 		}
+# 		else if ( (cnd = getClassNode(type, false)) )
+# 		{
+#-			pair<map<string, CParseNode*>::iterator, bool>	res = params.insert(make_pair<string, CParseNode*>(name, cnd));
+#+			pair<map<string, CParseNode*>::iterator, bool>	res = params.insert(make_pair<string&, CClassNode*&>(name, cnd));
+# 			if (!res.second)
+# 				error("log parameter '"+name+"' already defined");
+# 
+#@@ -4739,7 +4739,7 @@
+# 		{
+# 			CExtLogTypeNode*	extnd = new CExtLogTypeNode();
+# 			extnd->ExtLogType = "string";
+#-			pair<map<string, CParseNode*>::iterator, bool>	res = params.insert(make_pair<string, CParseNode*>(name, extnd));
+#+			pair<map<string, CParseNode*>::iterator, bool>	res = params.insert(make_pair<string&, CExtLogTypeNode*&>(name, extnd));
+# 			if (!res.second)
+# 				error("log parameter '"+name+"' already defined");
+# 

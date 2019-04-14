@@ -9,7 +9,8 @@ inherit games cmake-utils
 MY_PN="${PN}-master"
 DESCRIPTION="a Monkey Target clone (six mini-game from Super Monkey Ball)"
 HOMEPAGE="http://www.mtp-target.org/"
-SRC_URI="https://github.com/ryzom/${PN}/archive/master.zip"
+SRC_URI="https://github.com/ryzom/${PN}/archive/master.zip
+	http://www.lua.org/ftp/lua-5.0.3.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -40,6 +41,36 @@ S=${WORKDIR}/${MY_PN}
 	#	die "sed failed"
 	#epatch "${FILESDIR}/${P}_remove_dumptags.patch"
 #}
+
+src_prepare() {
+	epatch "${FILESDIR}/compile_options.patch" || die
+	epatch "${FILESDIR}/compile_errors.patch" || die
+	# We are hardlinking this
+	sed -i "s/^\s*FIND_PACKAGE(Lua50 REQUIRED)$//" CMakeLists.txt || die
+	# Fix paths
+	sed -i "s%RUNTIME DESTINATION games%&/bin%" {client,server}/src/CMakeLists.txt &&
+	sed -i "s%DESTINATION etc%DESTINATION /etc%" client/CMakeLists.txt || die
+	cmake-utils_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DNL_ETC_PREFIX:PATH=/etc
+	)
+	cmake-utils_src_configure
+	# CMake seems to be missing zlib. Also, hardlink the lua version we are going to compile
+	sed -i "s%-lxml2%& -lz -L../../../lua-5.0.3/lib -llua -llualib%" "${BUILD_DIR}/client/src/CMakeFiles/tux-target.dir/link.txt" || die
+	sed -i "s%-lxml2%& -L../../../lua-5.0.3/lib -llua -llualib%" "${BUILD_DIR}/server/src/CMakeFiles/tux-target-srv.dir/link.txt" || die
+}
+
+src_compile() {
+	cd ../lua-5.0.3 && make || die
+	cd "${S}" && cmake-utils_src_compile
+}
+
+src_install() {
+	cmake-utils_src_install
+}
 
 #src_compile() {
 #	emake update || die "emake update failed"
@@ -77,4 +108,3 @@ S=${WORKDIR}/${MY_PN}
 	#cp server/mtp_target_service{_default,}.cfg || die "server cfg"
 	#chown ${GAMES_USER}:${GAMES_GROUP} client/mtp_target.cfg server/mtp_target_service.cfg
 	#chmod 660 client/mtp_target.cfg server/mtp_target_service.cfg
-

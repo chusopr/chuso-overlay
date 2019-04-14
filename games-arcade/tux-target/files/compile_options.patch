@@ -1,0 +1,22 @@
+--- CMakeLists.txt	2019-04-13 18:49:21.885460272 +0200
++++ CMakeLists.txt	2019-04-13 18:47:26.234257432 +0200
+@@ -30,6 +30,8 @@
+ 
+ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+ 
++set(CMAKE_CXX_STANDARD 11)
++
+ PROJECT(Tux-Target CXX C)
+ SET(TUX_VERSION_MAJOR 1)
+ SET(TUX_VERSION_MINOR 19)
+--- CMakeModules/nel.cmake	2019-04-13 18:50:39.666276248 +0200
++++ CMakeModules/nel.cmake	2019-04-13 18:50:52.686413256 +0200
+@@ -66,7 +66,7 @@
+     SET(NL_RELEASE_CFLAGS "/Ox /Ob2 /Oi /Ot /Oy /GT /GF")
+     SET(NL_RELEASEDEBUG_CFLAGS "/DNL_RELEASE_DEBUG /Ob2 /GF")
+   ELSE(WIN32)
+-    SET(PLATFORM_CFLAGS "-ftemplate-depth-24 -D_REENTRANT -Wall -ansi -W -Wpointer-arith -Wsign-compare -Wno-deprecated-declarations -Wno-multichar -Wno-long-long -Wno-unused")
++    SET(PLATFORM_CFLAGS "-ftemplate-depth-36 -D_REENTRANT -Wall -ansi -W -Wpointer-arith -Wsign-compare -Wno-deprecated-declarations -Wno-multichar -Wno-long-long -Wno-unused -I../../../lua-5.0.3/include")
+     IF(WITH_COVERAGE)
+       SET(PLATFORM_CFLAGS "-fprofile-arcs -ftest-coverage ${PLATFORM_CFLAGS}")
+     ENDIF(WITH_COVERAGE)

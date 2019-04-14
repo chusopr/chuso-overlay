@@ -1,0 +1,42 @@
+--- code/nel/include/nel/3d/track_tcb.h	2019-01-13 22:07:49.938079414 +0100
++++ code/nel/include/nel/3d/track_tcb.h	2019-01-13 22:28:34.572621469 +0100
+@@ -391,7 +391,7 @@
+ 			NLMISC::clamp(date, 0,1);
+ 
+ 			// ease.
+-			date = ease(previous, date);
++			date = this->ease(previous, date);
+ 
+ 			// quad slerp.
+ 			resultVal.Value= CQuat::squadrev(next->LocalAngleAxis, previous->Quat, previous->A, next->B, next->Quat, date);
+@@ -548,7 +548,7 @@
+ 
+ 		// compute tangents factors.
+ 		float	ksm, ksp, kdm, kdp;
+-		computeTCBFactors(key, timeBefore, time, timeAfter, rangeDelta, firstKey, endKey, isLoop, ksm,ksp,kdm,kdp);
++		this->computeTCBFactors(key, timeBefore, time, timeAfter, rangeDelta, firstKey, endKey, isLoop, ksm,ksp,kdm,kdp);
+ 
+ 
+ 		// A/B.
+--- code/ryzom/common/src/game_share/mirror_prop_value_inline.h	2019-01-13 22:44:06.663326877 +0100
++++ code/ryzom/common/src/game_share/mirror_prop_value_inline.h	2019-01-13 22:44:24.353522224 +0100
+@@ -629,7 +629,7 @@
+ 	{
+ 		T temp;
+ 		s.serial( temp );
+-		tempReassign( temp );
++		this->tempReassign( temp );
+ 	}
+ 	else
+ 	{
+--- code/nel/src/misc/gtk_displayer.cpp	2019-04-12 22:04:22.337810848 +0200
++++ code/nel/src/misc/gtk_displayer.cpp	2019-04-12 22:03:50.257428252 +0200
+@@ -60,7 +60,7 @@
+ // Functions
+ //
+ 
+-CGtkDisplayer (const char *displayerName) : CWindowDisplayer(displayerName)
++CGtkDisplayer::CGtkDisplayer (const char *displayerName) : CWindowDisplayer(displayerName)
+ {
+ 	needSlashR = false;
+ 	createLabel ("@Clear|CLEAR");

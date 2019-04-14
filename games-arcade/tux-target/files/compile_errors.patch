@@ -1,0 +1,52 @@
+--- client/src/3d_task.cpp	2019-04-13 19:09:25.196446958 +0200
++++ client/src/3d_task.cpp	2019-04-13 19:09:33.796542522 +0200
+@@ -171,9 +171,6 @@
+ 	if(CConfigFileTask::instance().configFile().getVar("VSync").asInt() == 0)
+ 		Driver->setSwapVBLInterval(0);
+ 
+-	if(CConfigFileTask::instance().configFile().getVar("NativeFragmentProgramsOnly").asInt() == 0)
+-		Driver->forceNativeFragmentPrograms(false);
+-
+ #ifdef NL_OS_WINDOWS
+ 	Fullscreen = CConfigFileTask::instance().configFile().getVar("Fullscreen").asInt()==1;
+ #else
+--- client/src/mtp_target.cpp.bak	2019-04-13 19:25:36.297132861 +0200
++++ client/src/mtp_target.cpp	2019-04-13 19:25:56.477356896 +0200
+@@ -469,8 +469,6 @@
+ 	
+ //	SleepTime = CConfigFileTask::getInstance().configFile().getVar("Sleep").asInt();
+ 
+-	setReportEmailFunction ((void*)sendEmail);
+-
+ 	CMtpTarget::getInstance().State = CMtpTarget::eLoginPassword;
+ 	
+ 	DisplayDebug = (CConfigFileTask::getInstance().configFile().getVar("DisplayDebug").asInt() == 1);
+--- client/src/sound_manager.cpp	2019-04-13 19:44:00.599300284 +0200
++++ client/src/sound_manager.cpp	2019-04-13 19:40:32.876966039 +0200
+@@ -68,13 +68,13 @@
+ USource *CSoundManager::createTTSource (TSound soundID)
+ {
+ 	if(soundID==BallOpen)
++		return AudioMixer->createSource(CSheetId("open"));
+-		return AudioMixer->createSource(CStringMapper::map("open"));
+ 	if(soundID==BallClose)
++		return AudioMixer->createSource(CSheetId("close"));
+-		return AudioMixer->createSource(CStringMapper::map("close"));
+ 	if(soundID==Splash)
++		return AudioMixer->createSource(CSheetId("splash"));
+-		return AudioMixer->createSource(CStringMapper::map("splash"));
+ 	if(soundID==Impact)
++		return AudioMixer->createSource(CSheetId("beep"));
+-		return AudioMixer->createSource(CStringMapper::map("beep"));
+ 
+ 	return 0;
+ }
+@@ -182,7 +182,7 @@
+ 	if(!isInit || !PlaySound)
+ 		return;
+ 
++	USource *soundSource = AudioMixer->createSource(CSheetId(soundName), true);
+-	USource *soundSource = AudioMixer->createSource(CStringMapper::map(soundName), true);
+ 	if (NULL == soundSource)
+ 	{
+ 		nlwarning("----can't find GUI sound: %s", soundName.c_str());

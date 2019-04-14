@@ -5,7 +5,7 @@
 EAPI="5"
 
 EHG_REPO_URI="https://bitbucket.org/ryzom/ryzomcore"
-EHG_REVISION="ryzomcore_0_8_0"
+EHG_REVISION="ryzomcore/v${PV}"
 
 inherit cmake-utils games mercurial
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.opennel.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="log coverage pch static external gtk qt4 debug stlport dashboard network
+IUSE="log coverage pch static external gtk debug stlport dashboard network
 3d pacs georges ligo logic audio opengl cegui samples tests nelns login-system
 ryzom snowballs openal fmod tools gles client server squish doc"
 
@@ -58,7 +58,6 @@ RDEPEND="dev-libs/libxml2
 		opengl? ( virtual/opengl )
 		openal? ( media-libs/openal )
 		gtk? ( x11-libs/gtk+ )
-		qt4? ( dev-qt/qtcore )
 		stlport? ( dev-libs/STLport )
 		cegui? ( dev-games/cegui )
 		fmod? ( media-libs/fmod )"
@@ -79,12 +78,13 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/std_namespace.patch" || die
+	#0# epatch "${FILESDIR}/std_namespace.patch" || die
 	#epatch "${FILESDIR}/freetype_path.patch" || die
-	epatch "${FILESDIR}/${P}-scope.patch" || die
-	epatch "${FILESDIR}/${P}-c11.patch" || die
+	#0# epatch "${FILESDIR}/${P}-scope.patch" || die
+	#0# epatch "${FILESDIR}/${P}-c11.patch" || die
+	epatch "${FILESDIR}/operators_exceptions.patch" || die
 	sed -i 's%/etc/alternatives/x-www-browser%xdg-open%' code/nel/src/misc/common.cpp || die
-	sed -i 's% -ansi%%' code/CMakeModules/nel.cmake || die
+	#0# sed -i 's% -ansi%%' code/CMakeModules/nel.cmake || die
 	cmake-utils_src_prepare
 }
 
@@ -98,7 +98,6 @@ src_configure() {
 		$(cmake-utils_use_with static STATIC_DRIVERS)
 		$(cmake-utils_use_with external EXTERNAL)
 		$(cmake-utils_use_with gtk GTK)
-		$(cmake-utils_use_with qt4 QT)
 		$(cmake-utils_use_with debug SYMBOLS)
 		$(cmake-utils_use_with debug DEBUG)
 		$(cmake-utils_use_with stlport STLPORT)
@@ -122,6 +121,8 @@ src_configure() {
 		$(cmake-utils_use_with fmod DRIVER_FMOD)
 		$(cmake-utils_use_with tools NEL_TOOLS)
 		$(cmake-utils_use_with gles DRIVER_OPENGLES)
+		-DWITH_GUI:BOOL=OFF
+		-DWITH_QT:BOOL=OFF
 		-DWITH_NEL:BOOL=ON
 		-DWITH_INSTALL_LIBRARIES:BOOL=ON
 		$(
@@ -132,42 +133,36 @@ src_configure() {
 	)
 
 	use ryzom &&
-		mycmakeargs=(
-			$mycmakeargs
+		mycmakeargs+=(
 			$(cmake-utils_use_with tools RYZOM_TOOLS)
 			$(cmake-utils_use_with audio RYZOM_SOUND)
 		)
 
 	use nelns &&
-		mycmakeargs=(
-			$mycmakeargs
+		mycmakeargs+=(
 			$(cmake-utils_use_with server NELNS_SERVER)
 			$(cmake-utils_use_with login-system NELNS_LOGIN_SYSTEM)
 		)
 	use static &&
-		mycmakeargs=(
-			$mycmakeargs
+		mycmakeargs+=(
 			$(cmake-utils_use_with static-external STATIC_EXTERNAL)
 		)
 
 	use client &&
-		mycmakeargs=(
-			$mycmakeargs
+		mycmakeargs+=(
 			$(cmake-utils_use_with ryzom RYZOM_CLIENT)
 			$(cmake-utils_use_with snowballs SNOWBALLS_CLIENT)
 		)
 
 	use 3d || use client &&
-		mycmakeargs=(
-			$mycmakeargs
+		mycmakeargs+=(
 			-DFREETYPE_INCLUDE_DIRS=$(freetype-config --prefix)/include/freetype2
 			$(cmake-utils_use_with ryzom RYZOM_CLIENT)
 			$(cmake-utils_use_with snowballs SNOWBALLS_CLIENT)
 		)
 
 	use server &&
-		mycmakeargs=(
-			$mycmakeargs
+		mycmakeargs+=(
 			$(cmake-utils_use_with ryzom RYZOM_SERVER)
 			$(cmake-utils_use_with snowballs SNOWBALLS_SERVER)
 		)
