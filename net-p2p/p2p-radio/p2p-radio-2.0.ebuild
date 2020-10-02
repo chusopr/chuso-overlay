@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-inherit java-pkg-2 java-pkg-simple java-utils-2
+EAPI=7
+
+inherit desktop java-pkg-2 java-pkg-simple java-utils-2
 MY_PN=${PN/-/}
 DESCRIPTION="P2P radio streaming"
 HOMEPAGE="http://p2p-radio.sourceforge.net/"
@@ -15,6 +16,7 @@ RESTRICT="mirror"
 
 DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"
+BDEPEND="app-arch/unzip"
 
 JAVA_ENCODING="ISO-8859-1"
 
