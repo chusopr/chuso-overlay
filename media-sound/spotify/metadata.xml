@@ -6,9 +6,7 @@
     <flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs).</flag>
     <flag name="gcrypt">Enables gcrypt support: Needed for rtmp(t)e support if openssl, librtmp or gmp is not used.</flag>
     <flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
-    <flag name="external-ffmpeg">Pull media-video/ffmpeg dependency instead of compiling a bundled one for local files playback.</flag>
     <flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
-    <flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
     <flag name="libilbc">Enables iLBC de/encoding via <pkg>media-libs/libilbc</pkg>.</flag>
     <flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
     <flag name="pax_kernel">Triggers a paxmarking of the main Spotify binary</flag>
