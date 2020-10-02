@@ -1,5 +1,0 @@
-*findcruft2-99999999 (04 Dec 2015)
-
-  04 Dec 2015; Jesús Pérez (Chuso) +findcruft2-99999999.ebuild, +metadata.xml:
-  Just the same ebuild provided by package author with some minor fixes in
-  header and ~arm KEYWORD.
