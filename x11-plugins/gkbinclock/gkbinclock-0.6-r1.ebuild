@@ -1,6 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+
+EAPI=6
 
 inherit gkrellm-plugin
 
@@ -12,8 +13,16 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-PLUGIN_SO=${PN}.2.so
+DEPEND="app-admin/gkrellm"
+RDEPEND="${DEPEND}"
+
+PLUGIN_SO=( ${PN}.2.so )
+
+src_prepare() {
+	default
+	sed -i 's/ -Wl//' Makefile || die
+}
 
 src_compile() {
-	emake ${PN}.2.so || die "emake failed"
+	emake ${PN}.2.so
 }
