@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>pinetoo@chuso.net</email>
+    <name>Jesus Perez Rey</name>
+  </maintainer>
+  <longdescription>
+    Collabora Online Development Edition (CODE) is the development version of Collabora Online, a LibreOffice-based online office suite that supports all major document, spreadsheet and presentation file formats and can be used from your browser.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">CollaboraOnline/online</remote-id>
+  </upstream>
+</pkgmetadata>
