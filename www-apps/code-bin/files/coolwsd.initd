@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+command=/usr/bin/coolwsd
+command_args="--version --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd"
+command_user=cool
+command_background=1
+output_log="/var/log/${SVCNAME}/output.log"
+error_log="/var/log/${SVCNAME}/error.log"
+pidfile="/run/${SVCNAME}.pid"
+name="Collabora Online Webservice Daemon"

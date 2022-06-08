@@ -5,7 +5,7 @@ EAPI=7
 
 inherit acct-user
 
-KEYWORDS="~arm64"
+KEYWORDS="~amd64 ~arm64"
 DESCRIPTION="Service account for Collabora Online"
 
 ACCT_USER_GROUPS=( ${PN} )

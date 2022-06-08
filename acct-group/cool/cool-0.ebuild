@@ -5,6 +5,6 @@ EAPI=7
 
 inherit acct-group
 
-KEYWORDS="~arm64"
+KEYWORDS="~amd64 ~arm64"
 
 ACCT_GROUP_ID=-1
