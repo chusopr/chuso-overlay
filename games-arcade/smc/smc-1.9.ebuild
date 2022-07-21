@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools desktop flag-o-matic
+EAPI=6
+inherit autotools desktop
 
 MUSIC_P=SMC_Music_4.1_high
 DESCRIPTION="Secret Maryo Chronicles"
@@ -30,19 +30,22 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	music? ( app-arch/unzip )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-boost150.patch
+	"${FILESDIR}"/${P}-underlink.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_unpack() {
 	unpack ${P}.tar.bz2
 	if use music; then
 		cd "${S}" || die
 		unpack ${MUSIC_P}.zip
 	fi
-}
-
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-boost150.patch \
-		"${FILESDIR}"/${P}-underlink.patch
-	eautoreconf
 }
 
 src_install() {

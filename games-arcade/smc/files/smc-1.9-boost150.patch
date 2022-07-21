@@ -1,5 +1,5 @@
---- src/overworld/world_manager.cpp.old	2012-11-14 17:05:19.759087973 +0100
-+++ src/overworld/world_manager.cpp	2012-11-14 17:06:55.365644219 +0100
+--- smc-1.9/src/overworld/world_manager.cpp.old	2012-11-14 17:05:19.759087973 +0100
++++ smc-1.9/src/overworld/world_manager.cpp	2012-11-14 17:06:55.365644219 +0100
 @@ -111,14 +111,14 @@
  void cOverworld_Manager :: Load_Dir( const std::string &dir, bool user_dir /* = 0 */ ) 
  {
@@ -17,8 +17,8 @@
  
  			// only directories with an existing description
  			if( fs::is_directory( *dir_itr ) && File_Exists( dir + "/" + current_dir + "/description.xml" ) )
---- src/video/video.cpp.old	2012-11-14 17:10:26.448625365 +0100
-+++ src/video/video.cpp	2012-11-14 17:11:37.486580531 +0100
+--- smc-1.9/src/video/video.cpp.old	2012-11-14 17:10:26.448625365 +0100
++++ smc-1.9/src/video/video.cpp	2012-11-14 17:11:37.486580531 +0100
 @@ -749,7 +749,7 @@
  		{
  			try
@@ -37,8 +37,8 @@
  	}
  	// cache available
  	else
---- src/core/filesystem/filesystem.cpp.old	2012-11-14 09:00:41.965617165 +0100
-+++ src/core/filesystem/filesystem.cpp	2012-11-14 16:57:11.282043980 +0100
+--- smc-1.9/src/core/filesystem/filesystem.cpp.old	2012-11-14 09:00:41.965617165 +0100
++++ smc-1.9/src/core/filesystem/filesystem.cpp	2012-11-14 16:57:11.282043980 +0100
 @@ -64,7 +64,7 @@
  
  bool Dir_Exists( const std::string &dir )
