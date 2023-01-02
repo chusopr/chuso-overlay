@@ -1,0 +1,19 @@
+# chuso-overlay repository has been moved to https://git.chuso.net/chuso/chuso-overlay
+# See https://github.com/chusopr/chuso-overlay for instructions on updating your configuration to the new URL.
+acct-group/cool
+acct-group/mobilizon
+acct-user/cool
+acct-user/mobilizon
+app-crypt/autofirma
+app-crypt/configuradorfnmt
+app-misc/amelia
+app-misc/rememberthemilk
+dev-games/cegui
+dev-libs/libreport
+games-arcade/jumpnbump
+games-arcade/smc
+net-p2p/p2p-radio
+www-apps/code-bin
+www-apps/mobilizon-bin
+x11-drivers/xf86-video-armada
+x11-plugins/gkbinclock
