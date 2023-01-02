@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+
+description="Mobilizon Service"
+
+depend() {
+	need localmount net
+	use logger
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --user mobilizon \
+		--exec /opt/mobilizon/bin/mobilizon \
+		--chdir /opt/mobilizon \
+		--env "MIX_ENV=prod" --background -- start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --user mobilizon \
+		--exec /opt/mobilizon/bin/mobilizon \
+		--chdir /opt/mobilizon \
+		--env "MIX_ENV=prod" -- stop
+	eend $?
+}
